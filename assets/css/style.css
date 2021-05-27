@@ -1,3 +1,54 @@
 body{
     background-color: white;
+    height: 100vh;
+}
+#header{
+    padding: 1%;
+}
+#searchcity{
+    padding: 20px;
+    border: 1px solid whitesmoke;
+    height:82vh;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+#search{
+    display: table-column;
+    float: left;
+}
+#lastsearch{
+    display: table-column;
+    float: left;
+    background-color: white;
+    margin-top: 10px;
+    padding: 10px 5px 10px 5px;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    height: 80vh;
+
+}
+main{
+    border: 1px solid gainsboro;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 20px;
+    height: 40vh;
+    margin-left: 20%;
+
+}
+#weather-section{
+    display: flex;  
+    flex-direction: column;
+    justify-content: space-around;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 0 20px 20px 20px;
+    height: 40vh;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    margin-left: 20%;
+}
+.card{
+    width: 15%;
+    height: 100%;
 }

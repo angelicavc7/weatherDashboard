@@ -11,7 +11,7 @@
     <title>weatherDashboard</title>
 </head>
 <body>
-    <div class="jumbotron jumbotron-fluid bg-secondary text-white p-s mb-2">
+    <div id = "header" class="jumbotron jumbotron-fluid bg-secondary text-white p-s mb-2">
         <div class="container text-center">
           <h1 class="display-4">Weather Dashboard</h1>
           </div>
@@ -19,8 +19,8 @@
 
       <!-- search city --> 
         
-          <div>
-            <div class="card-body bg-light">
+          <div id = "searchcity">
+            <div id = "search" class="card-body bg-light">
               <h5 class="card-title">Search for a City:</h5>
               <form id="search-city" class="form-inline">
               <div class="input-group">
@@ -28,7 +28,9 @@
                   <input id="search-input" type="search" class="form-control mr-0 pr-0"><button id="search-button" type="submit" class="btn btn-primary ml-0"><i class="fas fa-search"></i></button>
                 </div>
               </form>
-            </div>            
+            </div>   
+        
+        <div id = "lastsearch">         
           <p class="list-group-flush">
             <div>
              <ul class="list-group " id="cityListGroup">
@@ -36,18 +38,17 @@
             </div>
           </p>
         </div>
-    
+     </div>
     <!-- weather section -->
     <section id = "weather-section">
-      <div class="w-75 px-3 no-gutters">
-        <div class=container>
-            <div class="card border-dark mb-3" style="w-100">
-              <div class="card-header font-weight-bold"><h3><span id="currentCityName"></span> (<span id="date"></span>) <img id="icon" src=""></h3></div>
-              <div class="card-body text-dark">
-                <p class="card-text">Temperature: <span id="temp"></span></p>
-                <p class="card-text">Humidity: <span id="hum"></span></p>
-                <p class="card-text">Wind Speed: <span id="wind"></span></p>
-                <p class="card-text">UV Index: <span id="UV"></span></p>
+        <div class = container>
+            <div class="cardws border-dark mb-3" style="w-100">
+              <div class="cardws-header font-weight-bold"><h3><span id="currentCityName"></span> (<span id="date"></span>) <img id="icon" src=""></h3></div>
+              <div class="cardws-body text-dark">
+                <p class="cardws-text">Temperature: <span id="temp"></span></p>
+                <p class="cardws-text">Humidity: <span id="hum"></span></p>
+                <p class="cardws-text">Wind Speed: <span id="wind"></span></p>
+                <p class="cardws-text">UV Index: <span id="UV"></span></p>
               </div>
             </div>
         </div>
@@ -55,13 +56,12 @@
 
     <main id = "weather-forecast">        
     <!-- 5 day forecast -->
-    <div class="w-75 px-3 no-gutters">
         <section id="forecast-result" class="bg-light">
         <div id="forecast-header">
             <h3 class="dimmer-switch">5 Day Forecast:</h3>
         </div>
 
-        <div id="cards-container" class="d-flex justify-content-between dimmer-switch">
+        <div id="cards-container" class="d-flex justify-content-between">
             <!-- Card 1 -->
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;" id="card-1">
                 <div class="card-header" id="card-header-1">Date</div>
@@ -114,7 +114,6 @@
         </div>
 
     </section>
-    </div>
     </main>
 
    
