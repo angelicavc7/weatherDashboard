@@ -1,8 +1,7 @@
 
-var APIkey = '174d85473d9c790313eefc66d2e14507';
-
 today = moment();
     $("#date").text(today.format("dddd, MMM Do"));
+var APIkey = '174d85473d9c790313eefc66d2e14507';
 
     var searchFormEl = document.querySelector('#search-city');
     var resultTextEl = document.querySelector('#currentCityName');
@@ -10,57 +9,16 @@ today = moment();
     
     var weather = [];
     var cityList = [];
-    function handleSearchFormSubmit(event) {
-        event.preventDefault();
-        var searchInputVal = document.querySelector('#search-input').value;
-        if (!searchInputVal) {
-          console.error('You need a search input value!');
-          return;
-        }
-        searchApi(searchInputVal);
-      } 
-      
-      //function to load the text from memory
     
-    function loadCityList(cityList) { 
-        cityList = JSON.parse(localStorage.getItem("cityList"));
-        if(!cityList) {  
-            //check to see if the variable exists
-            console.log("- No saved information"); 
-            //prints error message in console
-            cityList=[];
-            return cityList;
-        }
-        return cityList;
-    }
-    
-    function showCityList(cityList) {  
-        //displays the list of cities chosen in the past
-        var varText = "";
-        for (var i = 0; i < cityList.length; i++) {
-          varText += `<li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center" onclick="searchApi('`+cityList[i]+`')">`+cityList[i]+`</li>`;
-        }
-        $(`#cityListGroup`).html(varText);
-    }
-    
-    function updateCityList(currentCityName) {  
-        //saves the city list to local storage
-        cityList.indexOf(currentCityName) === -1 ? cityList.push(currentCityName) : console.log("City already on list")
-        localStorage.setItem("cityList", JSON.stringify(cityList)); //saves cityList
-        showCityList(cityList);
-    }
-    
-
-    function displayWeather(weather) {  
-        //updates the weather information for the various IDs
+    function displayWeather(weather) {  //updates the weather information for the various IDs
         $("#day0-wind").text(weather[0].wind);
         $("#day0-UV").text(weather[0].UV);
         $(`#currentCityName`).text(currentCityName);
-        if (weather[0].UV >= 11) {varUV = `Violet`}; 
-        if (weather[0].UV < 11) {varUV = `Red`}; 
-        if (weather[0].UV < 8) {varUV = `Orange`}; 
-        if (weather[0].UV < 6) {varUV = `Yellow`}; 
-        if (weather[0].UV < 3) {varUV = `Green`}; 
+        if (weather[0].UV >= 11) {varUV = `Violet`}; // Extreme
+        if (weather[0].UV < 11) {varUV = `Red`}; // Very High
+        if (weather[0].UV < 8) {varUV = `Orange`}; // High
+        if (weather[0].UV < 6) {varUV = `Yellow`}; // Moderate
+        if (weather[0].UV < 3) {varUV = `Green`}; // Low
         $(`#day0-UV`).css( "background-color", varUV);
         for (var i = 0; i <= 5; i++) {
             $(`#day`+i+`-temp`).text(weather[i].temp);
@@ -71,9 +29,21 @@ today = moment();
         }
     }
     
+    function showCityList(cityList) {  //displays the list of cities chosen in the past
+        var varText = "";
+        for (var i = 0; i < cityList.length; i++) {
+          varText += `<li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center" onclick="searchApi('`+cityList[i]+`')">`+cityList[i]+`</li>`;
+        }
+        $(`#cityListGroup`).html(varText);
+    }
     
-    function searchApi2(varLat, varLon, currentCityName) { 
-         //have to search onecal API to get 5 day forcast 
+    function updateCityList(currentCityName) {  //saves the city list to local storage
+        cityList.indexOf(currentCityName) === -1 ? cityList.push(currentCityName) : console.log("City already on list")
+        localStorage.setItem("cityList", JSON.stringify(cityList)); //saves cityList
+        showCityList(cityList);
+    }
+    
+    function searchApi2(varLat, varLon, currentCityName) {  //have to search onecal API to get 5 day forcast 
         var locQueryUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=`+varLat+`&lon=`+varLon+`&exclude=hourly&units=imperial&appid=174d85473d9c790313eefc66d2e14507`;
         fetch(locQueryUrl)
           .then(function (response) {
@@ -109,10 +79,10 @@ today = moment();
           });
       }
     
-    function searchCity(query) {
-        var searchedCityUrl = `https://api.openweathermap.org/data/2.5/forecast?q=`+query+`&appid=174d85473d9c790313eefc66d2e14507`;
+    function searchApi(query) {
+        var locQueryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=`+query+`&appid=174d85473d9c790313eefc66d2e14507`;
      
-        fetch(searchedCityUrl)
+        fetch(locQueryUrl)
           .then(function (response) {
             console.log(response);
             if (!response.ok) {
@@ -135,9 +105,27 @@ today = moment();
           });
     }
     
+    function handleSearchFormSubmit(event) {
+        event.preventDefault();
+        var searchInputVal = document.querySelector('#search-input').value;
+        if (!searchInputVal) {
+          console.error('You need a search input value!');
+          return;
+        }
+        searchApi(searchInputVal);
+      }
     
+    function loadCityList(cityList) {  //function to load the text from memory
+        cityList = JSON.parse(localStorage.getItem("cityList"));
+        if(!cityList) {  //check to see if the variable exists
+            console.log("- No saved information"); //prints error message in console
+            cityList=[];
+            return cityList;
+        }
+        return cityList;
+    }
     searchFormEl.addEventListener('submit', handleSearchFormSubmit);
     
     cityList = loadCityList(cityList);
-    searchCity("Seattle");
+    searchApi("Seattle");
     
