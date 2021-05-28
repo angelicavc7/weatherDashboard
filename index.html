@@ -33,22 +33,24 @@
         <div id = "lastsearch">         
           <p class="list-group-flush">
             <div>
-             <ul class="list-group " id="cityListGroup">
-             </ul>
+             <ul class="cityListGroup " id="cityListGroup">
+             </ul>L
             </div>
           </p>
         </div>
      </div>
+
+
     <!-- weather section -->
     <section id = "weather-section">
-        <div class = container>
+        <div class = containerWs>
             <div class="cardws border-dark mb-3" style="w-100">
-              <div class="cardws-header font-weight-bold"><h3><span id="currentCityName"></span> (<span id="date"></span>) <img id="icon" src=""></h3></div>
-              <div class="cardws-body text-dark">
-                <p class="cardws-text">Temperature: <span id="temp"></span></p>
-                <p class="cardws-text">Humidity: <span id="hum"></span></p>
-                <p class="cardws-text">Wind Speed: <span id="wind"></span></p>
-                <p class="cardws-text">UV Index: <span id="UV"></span></p>
+              <div class="cardws-header font-weight-bold"><h3><span id="currentCityName"></span> <span id="date"></span> <img id="icon" src=""></h3></div>
+              <div class="cardws-body text-dark" id = "weatherSection">
+                <p class="cardws-text">Temperature: <span id="day0-temp"></span></p>
+                <p class="cardws-text">Humidity: <span id="day0-hum"></span></p>
+                <p class="cardws-text">Wind Speed: <span id="day0-wind"></span></p>
+                <p class="cardws-text">UV Index: <span id="day0-UV"></span></p>
               </div>
             </div>
         </div>
@@ -64,51 +66,51 @@
         <div id="cards-container" class="d-flex justify-content-between">
             <!-- Card 1 -->
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;" id="card-1">
-                <div class="card-header" id="card-header-1">Date</div>
+                <div class="card-header" id="day1-date">Date</div>
                 <div>
-                <img id="card-icon-1" src="http://openweathermap.org/img/wn/10d@2x.png">
-                <p id="card-temp-1"></p>
-                <p id="card-humid-1"></p>
+                <img id="day1-icon" src="http://openweathermap.org/img/wn/10d@2x.png">
+                <p id="day1-temp"></p>
+                <p id="day1-hum"></p>
                 </div>
             </div>
             
             <!-- Card 2 -->
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;" id="card-2">
-                <div class="card-header" id="card-header-2">Date</div>
+                <div class="card-header" id="day2-date">Date</div>
                 <div>
-                    <img id="card-icon-2" src="http://openweathermap.org/img/wn/10d@2x.png">
-                    <p id="card-temp-2"></p>
-                    <p id="card-humid-2"></p>
+                    <img id="day2-icon" src="http://openweathermap.org/img/wn/10d@2x.png">
+                    <p id="day2-temp"></p>
+                <p id="day2-hum"></p>
                 </div>
             </div>
             
             <!-- Card 3 -->
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;" id="card-3">
-                <div class="card-header" id="card-header-3">Date</div>
+                <div class="card-header" id="day3-date">Date</div>
                 <div>
-                    <img id="card-icon-3" src="http://openweathermap.org/img/wn/10d@2x.png">
-                    <p id="card-temp-3"></p>
-                    <p id="card-humid-3"></p>
+                    <img id="day3-icon" src="http://openweathermap.org/img/wn/10d@2x.png">
+                    <p id="day3-temp"></p>
+                <p id="day3-hum"></p>
                 </div>
             </div>
 
             <!-- Card 4 -->
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;" id="card-4">
-                <div class="card-header" id="card-header-4">Date</div>
+                <div class="card-header" id="day4-date">Date</div>
                 <div>
-                    <img id="card-icon-4" src="http://openweathermap.org/img/wn/10d@2x.png">
-                    <p id="card-temp-4"></p>
-                    <p id="card-humid-4"></p>
+                    <img id="day4-icon" src="http://openweathermap.org/img/wn/10d@2x.png">
+                    <p id="day4-temp"></p>
+                <p id="day4-hum"></p>
                 </div>
             </div>
 
             <!-- Card 5 -->
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;" id="card-5">
-                <div class="card-header" id="card-header-5">Date</div>
+                <div class="card-header" id="day5-date">Date</div>
                 <div>
-                    <img id="card-icon-5" src="http://openweathermap.org/img/wn/10d@2x.png">
-                    <p id="card-temp-5"></p>
-                    <p id="card-humid-5"></p>
+                    <img id="day5-icon" src="http://openweathermap.org/img/wn/10d@2x.png">
+                    <p id="day5-temp"></p>
+                <p id="day5-hum"></p>
                 </div>
             </div>
         </div>
